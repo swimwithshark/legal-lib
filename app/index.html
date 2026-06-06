@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Penal Code Search App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <h1>Malaysian Penal Code Search</h1>
+      <p>Search key Penal Code sections by section number, topic, or common terms.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="search-panel">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search: 302, murder, CBT, scam, theft, forgery..."
+        autocomplete="off"
+      />
+
+      <div class="quick-links">
+        <button data-search="murder">Murder</button>
+        <button data-search="CBT">CBT</button>
+        <button data-search="scam">Scam</button>
+        <button data-search="theft">Theft</button>
+        <button data-search="robbery">Robbery</button>
+        <button data-search="forgery">Forgery</button>
+      </div>
+    </section>
+
+    <section class="layout">
+      <aside class="results-panel">
+        <h2>Results</h2>
+        <div id="resultsList"></div>
+      </aside>
+
+      <section class="detail-panel">
+        <div id="detailView" class="empty-state">
+          Search or select a section to begin.
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
