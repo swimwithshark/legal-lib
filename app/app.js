@@ -47,6 +47,7 @@ function topicMatchesQuery(topic, query) {
   if (!q) return false;
 
   const searchableText = normalize([
+    topic.id,
     topic.title,
     topic.summary,
     ...(topic.commonTerms || [])
@@ -147,8 +148,12 @@ function renderTopic(topic) {
     .map(sectionId => sections.find(section => section.id === sectionId))
     .filter(Boolean);
 
-  // Clear the ?section=... URL when a topic is selected.
-  window.history.pushState({}, "", window.location.pathname);
+  // Update the browser URL so every topic can be shared directly.
+  window.history.pushState(
+    {},
+    "",
+    `?topic=${encodeURIComponent(topic.id)}`
+  );
 
   detailView.className = "";
   detailView.innerHTML = `
@@ -166,7 +171,7 @@ function renderTopic(topic) {
     <div class="related-list">
       ${related.map(section => `
         <button data-section-id="${escapeHtml(section.id)}">
-          Section ${escapeHtml(section.sectionNo)}
+          Section ${escapeHtml(section.sectionNo)} — ${escapeHtml(section.title)}
         </button>
       `).join("")}
     </div>
@@ -240,25 +245,46 @@ function renderSection(section) {
   });
 }
 
-function openSectionFromUrl() {
+function openFromUrl() {
   const params = new URLSearchParams(window.location.search);
+
   const sectionNo = params.get("section");
+  const topicId = params.get("topic");
 
-  if (!sectionNo) return;
+  if (sectionNo) {
+    const section = sections.find(item =>
+      String(item.sectionNo || "").toLowerCase() === sectionNo.toLowerCase()
+    );
 
-  const section = sections.find(item =>
-    String(item.sectionNo || "").toLowerCase() === sectionNo.toLowerCase()
-  );
+    if (section) {
+      searchInput.value = sectionNo;
+      search(sectionNo);
+      renderSection(section);
+    } else {
+      detailView.className = "empty-state";
+      detailView.innerHTML = `
+        Section ${escapeHtml(sectionNo)} was not found in this MVP dataset.
+      `;
+    }
 
-  if (section) {
-    searchInput.value = sectionNo;
-    search(sectionNo);
-    renderSection(section);
-  } else {
-    detailView.className = "empty-state";
-    detailView.innerHTML = `
-      Section ${escapeHtml(sectionNo)} was not found in this MVP dataset.
-    `;
+    return;
+  }
+
+  if (topicId) {
+    const topic = topics.find(item =>
+      String(item.id || "").toLowerCase() === topicId.toLowerCase()
+    );
+
+    if (topic) {
+      searchInput.value = topic.title;
+      search(topic.title);
+      renderTopic(topic);
+    } else {
+      detailView.className = "empty-state";
+      detailView.innerHTML = `
+        Topic ${escapeHtml(topicId)} was not found in this MVP dataset.
+      `;
+    }
   }
 }
 
@@ -282,9 +308,9 @@ document.querySelectorAll("[data-search]").forEach(button => {
   });
 });
 
-// Support browser Back/Forward buttons for direct section links.
+// Support browser Back/Forward buttons for direct section/topic links.
 window.addEventListener("popstate", () => {
-  openSectionFromUrl();
+  openFromUrl();
 
   if (!window.location.search) {
     detailView.className = "empty-state";
@@ -295,7 +321,7 @@ window.addEventListener("popstate", () => {
 
 loadData()
   .then(() => {
-    openSectionFromUrl();
+    openFromUrl();
   })
   .catch(error => {
     console.error(error);
