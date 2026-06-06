@@ -1,0 +1,91 @@
+[
+  {
+    "id": "murder-homicide",
+    "title": "Murder / homicide",
+    "summary": "This topic covers culpable homicide, murder, punishment for murder, and culpable homicide not amounting to murder.",
+    "commonTerms": ["murder", "murderer", "homicide", "killing", "causing death", "bunuh"],
+    "relatedSections": [
+      "penal-code-act-574_299",
+      "penal-code-act-574_300",
+      "penal-code-act-574_302",
+      "penal-code-act-574_304",
+      "penal-code-act-574_304A"
+    ]
+  },
+  {
+    "id": "cbt",
+    "title": "Criminal breach of trust",
+    "summary": "This topic covers criminal breach of trust, commonly known as CBT or pecah amanah, including general CBT and CBT by employees, agents, bankers, public servants and other trusted persons.",
+    "commonTerms": ["CBT", "criminal breach of trust", "pecah amanah", "entrusted money", "misuse company money", "employee took money", "agent took money"],
+    "relatedSections": [
+      "penal-code-act-574_405",
+      "penal-code-act-574_406",
+      "penal-code-act-574_407",
+      "penal-code-act-574_408",
+      "penal-code-act-574_409"
+    ]
+  },
+  {
+    "id": "cheating-scam",
+    "title": "Cheating / scam",
+    "summary": "This topic covers cheating, fraud-like conduct, deception and dishonestly inducing delivery of property.",
+    "commonTerms": ["cheating", "scam", "fraud", "cheat money", "kena tipu", "dishonest inducement"],
+    "relatedSections": [
+      "penal-code-act-574_415",
+      "penal-code-act-574_417",
+      "penal-code-act-574_420"
+    ]
+  },
+  {
+    "id": "theft",
+    "title": "Theft",
+    "summary": "This topic covers theft and punishment for theft.",
+    "commonTerms": ["theft", "steal", "stolen", "curi", "movable property"],
+    "relatedSections": [
+      "penal-code-act-574_378",
+      "penal-code-act-574_379"
+    ]
+  },
+  {
+    "id": "robbery",
+    "title": "Robbery",
+    "summary": "This topic covers when theft or extortion becomes robbery, and punishment for robbery.",
+    "commonTerms": ["robbery", "rompak", "snatch theft", "armed robbery", "violence during theft"],
+    "relatedSections": [
+      "penal-code-act-574_390",
+      "penal-code-act-574_392"
+    ]
+  },
+  {
+    "id": "forgery",
+    "title": "Forgery",
+    "summary": "This topic covers forgery, forged documents, forgery for cheating, and using forged documents as genuine.",
+    "commonTerms": ["forgery", "fake document", "false document", "forge signature", "forged form", "dokumen palsu"],
+    "relatedSections": [
+      "penal-code-act-574_463",
+      "penal-code-act-574_465",
+      "penal-code-act-574_468",
+      "penal-code-act-574_471"
+    ]
+  },
+  {
+    "id": "defamation",
+    "title": "Defamation",
+    "summary": "This topic covers criminal defamation and punishment for defamation.",
+    "commonTerms": ["defamation", "slander", "libel", "fitnah", "reputation"],
+    "relatedSections": [
+      "penal-code-act-574_499",
+      "penal-code-act-574_500"
+    ]
+  },
+  {
+    "id": "criminal-intimidation",
+    "title": "Criminal intimidation",
+    "summary": "This topic covers threats, intimidation and punishment for criminal intimidation.",
+    "commonTerms": ["criminal intimidation", "threat", "threaten someone", "ugut", "criminal threat"],
+    "relatedSections": [
+      "penal-code-act-574_503",
+      "penal-code-act-574_506"
+    ]
+  }
+]
