@@ -270,23 +270,26 @@ function openFromUrl() {
     return;
   }
 
-  if (topicId) {
-    const topic = topics.find(item =>
-      String(item.id || "").toLowerCase() === topicId.toLowerCase()
-    );
+ if (topicId) {
+  const normalizedTopicId = normalize(topicId);
 
-    if (topic) {
-      searchInput.value = topic.title;
-      search(topic.title);
-      renderTopic(topic);
-    } else {
-      detailView.className = "empty-state";
-      detailView.innerHTML = `
-        Topic ${escapeHtml(topicId)} was not found in this MVP dataset.
-      `;
-    }
+  const topic = topics.find(item =>
+    normalize(item.id) === normalizedTopicId ||
+    normalize(item.title).includes(normalizedTopicId) ||
+    (item.commonTerms || []).some(term => normalize(term) === normalizedTopicId)
+  );
+
+  if (topic) {
+    searchInput.value = topicId;
+    search(topicId);
+    renderTopic(topic);
+  } else {
+    detailView.className = "empty-state";
+    detailView.innerHTML = `
+      Topic ${escapeHtml(topicId)} was not found in this MVP dataset.
+    `;
   }
-}
+}}
 
 function escapeHtml(value) {
   return String(value || "")
